@@ -22,11 +22,11 @@ pub mod kcp;
 ///
 ///     let is_run =Arc::new( AtomicBool::new(true));
 ///     let kcp_client = Arc::new(kcp_client);
-///     let update = kcp_client.clone();
+///     let up = kcp_client.clone();
 ///     let run_arc=is_run.clone();
 ///     let th=thread::spawn(move || {
 ///         while run_arc.load(Ordering::Acquire) {
-///             update.update().unwrap();
+///             up.update().unwrap();
 ///             sleep(Duration::from_millis(10));
 ///         }
 ///     });
