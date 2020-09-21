@@ -1147,6 +1147,11 @@ impl Kcp {
         self.stream
     }
 
+    /// SET STREAM
+    pub fn set_stream(&mut self,stream:bool){
+        self.stream=stream
+    }
+
     /// Maximum Segment Size
     pub fn mss(&self) -> u32 {
         self.mss
