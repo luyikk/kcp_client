@@ -17,7 +17,7 @@ impl KcpClient{
     pub fn connect<A:ToSocketAddrs>(addr:A,config:KcpConfig)->Result<KcpClient,Box<dyn Error>>{
         let udp_client=Arc::new(UdpSocket::bind("0.0.0.0:0")?);
         udp_client.connect(addr)?;
-        let mut kcp=Kcp::new(0,udp_client.clone());
+        let mut kcp=Kcp::new_stream(0,udp_client.clone());
         config.apply_config(&mut kcp);
         let  kcp=Mutex::new(kcp);
         Ok(KcpClient{
